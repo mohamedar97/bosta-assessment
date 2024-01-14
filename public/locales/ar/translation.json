@@ -1,0 +1,21 @@
+{
+  "AppName": "بوسطة",
+  "AppNavbar": {
+    "MiddleSection": {
+      "one": { "title": "الرئيسية", "link": "https://bosta.co/ar-eg/home" },
+      "two": { "title": "الاسعار", "link": "https://bosta.co/ar-eg/pricing" },
+      "three": {
+        "title": "كلم المبيعات",
+        "link": "https://bosta.co/ar-eg/business"
+      }
+    },
+    "LastSection": {
+      "one": { "title": "تتبع شحنتك", "placeholder": "رقم التتبع" },
+      "two": {
+        "title": "تسجيل الدخول",
+        "link": "https://business.bosta.co/signin"
+      },
+      "three": { "title": "ENG", "link": "#" }
+    }
+  }
+}

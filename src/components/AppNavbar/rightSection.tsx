@@ -1,8 +1,18 @@
 import Grid from "@mui/material/Grid";
 import TrackShipmentForm from "./trackShipmentForm";
 import NavBarItem from "./navBarItem";
+import { useTranslation } from "react-i18next";
 
 const RightSection = () => {
+  const [t, i18n] = useTranslation();
+
+  const changeLanguage = (lng: string) => {
+    if (i18n.language === "en") {
+      i18n.changeLanguage("ar");
+    } else {
+      i18n.changeLanguage("en");
+    }
+  };
   return (
     <Grid
       container
@@ -12,13 +22,23 @@ const RightSection = () => {
       spacing={20}
     >
       <Grid item>
-        <TrackShipmentForm />
+        <TrackShipmentForm
+          title={t(`AppNavbar.LastSection.one.title`)}
+          placeholder={t(`AppNavbar.LastSection.one.placeholder`)}
+        />
       </Grid>
       <Grid item>
-        <NavBarItem title="Sign In" link="https://business.bosta.co/signin" />
+        <NavBarItem
+          title={t(`AppNavbar.LastSection.two.title`)}
+          link={t(`AppNavbar.LastSection.two.link`)}
+        />
       </Grid>
       <Grid item>
-        <NavBarItem title="ENG" link="#" />
+        <NavBarItem
+          title={t(`AppNavbar.LastSection.three.title`)}
+          link={t(`AppNavbar.LastSection.three.link`)}
+          onClick={changeLanguage}
+        />
       </Grid>
     </Grid>
   );

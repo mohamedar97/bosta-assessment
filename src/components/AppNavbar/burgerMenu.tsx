@@ -6,69 +6,87 @@ import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import NavBarItem from "./navBarItem";
+import { useTranslation } from "react-i18next";
 
-type Anchor = "top" | "left" | "bottom" | "right";
+type Anchor = "left" | "right";
 
 export default function BurgerMenu() {
+  const [t, i18n] = useTranslation();
+  const changeLanguage = (lng: string) => {
+    if (i18n.language === "en") {
+      i18n.changeLanguage("ar");
+    } else {
+      i18n.changeLanguage("en");
+    }
+  };
+  const orientation = i18n.language === "en" ? "right" : "left";
   const [state, setState] = React.useState({
-    top: false,
     left: false,
-    bottom: false,
     right: false,
   });
 
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
     (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event.type === "keydown" &&
-        ((event as React.KeyboardEvent).key === "Tab" ||
-          (event as React.KeyboardEvent).key === "Shift")
-      ) {
-        return;
-      }
-
       setState({ ...state, [anchor]: open });
     };
 
   const list = (anchor: Anchor) => (
-    <Box
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
+    <Box onClick={toggleDrawer(anchor, false)}>
       <List>
-        {["ENG", "Sign In", "Track Shipment"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <NavBarItem title={text} link="#" />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        <ListItem disablePadding>
+          <ListItemButton>
+            <NavBarItem
+              title={t(`AppNavbar.LastSection.three.title`)}
+              link={t(`AppNavbar.LastSection.three.link`)}
+              onClick={changeLanguage}
+            />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton>
+            <NavBarItem
+              title={t(`AppNavbar.LastSection.two.title`)}
+              link={t(`AppNavbar.LastSection.two.link`)}
+            />
+          </ListItemButton>
+        </ListItem>
       </List>
       <Divider />
       <List>
-        {["Home", "Pricing", "Contact Sales"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <NavBarItem title={text} link="#" />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        <ListItem disablePadding>
+          <ListItemButton>
+            <NavBarItem
+              title={t(`AppNavbar.MiddleSection.one.title`)}
+              link={t(`AppNavbar.MiddleSection.one.link`)}
+            />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton>
+            <NavBarItem
+              title={t(`AppNavbar.MiddleSection.two.title`)}
+              link={t(`AppNavbar.MiddleSection.two.link`)}
+            />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton>
+            <NavBarItem
+              title={t(`AppNavbar.MiddleSection.three.title`)}
+              link={t(`AppNavbar.MiddleSection.three.link`)}
+            />
+          </ListItemButton>
+        </ListItem>
       </List>
     </Box>
   );
 
   return (
     <div>
-      {(["right"] as const).map((anchor) => (
+      {([orientation] as const).map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>
             <MenuIcon />

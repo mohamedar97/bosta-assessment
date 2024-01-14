@@ -14,7 +14,12 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import React from "react";
 import NavBarItem from "./navBarItem";
 
-const TrackShipmentForm = () => {
+interface Props {
+  title: string;
+  placeholder: string;
+}
+
+const TrackShipmentForm: React.FC<Props> = ({ title, placeholder }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -36,7 +41,7 @@ const TrackShipmentForm = () => {
         }}
       >
         <Stack direction="row" alignItems="center" gap={1}>
-          <NavBarItem title="Track Shipment" link="#" />
+          <NavBarItem title={title} link="#" />
         </Stack>
       </Link>
       <Menu
@@ -63,12 +68,12 @@ const TrackShipmentForm = () => {
         >
           <Box paddingY={16} paddingX={20}>
             <Typography marginBottom={3} variant="h5">
-              Track Shipment
+              {title}
             </Typography>
             <Stack direction="row" alignItems="center">
               <TextField
-                sx={{ height: "56px", borderRadius: "4px 0px 0px 4px" }}
-                placeholder="Tracking No."
+                sx={{ height: "56px", borderRadius: "4px " }}
+                placeholder={placeholder}
               />
               <IconButton
                 disableRipple
@@ -77,7 +82,7 @@ const TrackShipmentForm = () => {
                   color: "#ffffff",
                   height: "56px",
                   padding: "10px",
-                  borderRadius: "0px 4px 4px 0px",
+                  borderRadius: "4px ",
                   border: "1px solid rgba(0, 0, 0, 0.23)",
                   backgroundColor: "#e30613",
                   "&:hover": {

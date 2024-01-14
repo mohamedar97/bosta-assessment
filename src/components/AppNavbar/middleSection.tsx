@@ -1,5 +1,6 @@
 import Grid from "@mui/material/Grid";
 import NavBarItem from "./navBarItem";
+import { useTranslation } from "react-i18next";
 
 const navItems = [
   {
@@ -17,6 +18,8 @@ const navItems = [
 ];
 
 const MiddleSection = () => {
+  const { t } = useTranslation();
+  const keys = ["one", "two", "three"] as const;
   return (
     <Grid
       container
@@ -25,8 +28,12 @@ const MiddleSection = () => {
       spacing={20}
       alignItems="center"
     >
-      {navItems.map((item) => (
-        <NavBarItem key={item.title} title={item.title} link={item.link} />
+      {keys.map((key) => (
+        <NavBarItem
+          key={t(`AppNavbar.MiddleSection.${key}.title`)}
+          title={t(`AppNavbar.MiddleSection.${key}.title`)}
+          link={t(`AppNavbar.MiddleSection.${key}.link`)}
+        />
       ))}
     </Grid>
   );

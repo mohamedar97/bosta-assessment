@@ -1,0 +1,18 @@
+{
+  "AppName": "Bosta",
+  "AppNavbar": {
+    "MiddleSection": {
+      "one": { "title": "Home", "link": "https://bosta.co/en-eg/home" },
+      "two": { "title": "Pricing", "link": "https://bosta.co/en-eg/pricing" },
+      "three": {
+        "title": "Contact Sales",
+        "link": "https://bosta.co/en-eg/business"
+      }
+    },
+    "LastSection": {
+      "one": { "title": "Track Shipment", "placeholder": "Tracking No." },
+      "two": { "title": "Sign In", "link": "https://business.bosta.co/signin" },
+      "three": { "title": "AR", "link": "#" }
+    }
+  }
+}

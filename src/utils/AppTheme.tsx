@@ -1,7 +1,5 @@
 import { createTheme } from "@mui/material/styles";
 
-const lang = "en"; // Fetch from provider
-
 const AppTheme = createTheme({
   breakpoints: {
     values: {
@@ -22,7 +20,7 @@ const AppTheme = createTheme({
   },
   spacing: 2,
   typography: {
-    fontFamily: lang === "en" ? "Lato, sans-serif" : "Cairo, sans-serif",
+    fontFamily: "Cairo, sans-serif",
     h4: {
       fontWeight: 700,
       fontSize: "18px",
