@@ -40,5 +40,14 @@
       "three": "الوقت",
       "four": "تفاصيل"
     }
+  },
+  "ShipmentAddress": {
+    "Title": "عنوان الشحنة",
+    "Address": "امبابة شارع طلعب حرب مدينة العمال بجوار البرنس منزل ١٧ بلوك ٢٢",
+    "ShipmentHelp": {
+      "title": "هل يوجد مشكلة في شحنتك؟",
+      "button": " ابلاغ عن مشكلة",
+      "link": "https://bosta.co/ar-eg/business"
+    }
   }
 }

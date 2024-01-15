@@ -37,5 +37,14 @@
       "three": "Time",
       "four": "Details"
     }
+  },
+  "ShipmentAddress": {
+    "Title": "Shipment Address",
+    "Address": "Imbaba, Talaat Harb St. Workers City, Next to El Price, Building 17 Block 22",
+    "ShipmentHelp": {
+      "title": "Any Issues with Your Shipment?",
+      "button": " Report an Issue",
+      "link": "https://bosta.co/en-eg/business"
+    }
   }
 }

@@ -106,7 +106,7 @@ export default function ShipmentOverviewStepper() {
     <Stack sx={{ width: "100%", paddingY: 15 }}>
       <Stepper
         alternativeLabel
-        activeStep={2}
+        activeStep={3}
         connector={<ColorlibConnector />}
       >
         {steps.map((label) => (

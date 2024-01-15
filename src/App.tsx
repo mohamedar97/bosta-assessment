@@ -4,6 +4,7 @@ import AppNavbar from "./components/AppNavbar";
 import { useTranslation } from "react-i18next";
 import ShipmentOverview from "./components/ShipmentOverview";
 import ShipmentDetails from "./components/ShipmentDetails";
+import ShipmentAddress from "./components/ShipmentAddress";
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -26,13 +27,7 @@ function App() {
             <ShipmentDetails />
           </Grid>
           <Grid item xs={12} md={4}>
-            <Box
-              sx={{
-                background: "red",
-              }}
-              width={"100%"}
-              height={200}
-            ></Box>
+            <ShipmentAddress />
           </Grid>
         </Grid>
       </Container>
