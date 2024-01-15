@@ -6,7 +6,6 @@ import ShipmentOverview from "./components/ShipmentOverview";
 
 function App() {
   const { t, i18n } = useTranslation();
-  console.log(i18n.language);
   if (i18n.language === "ar") {
     document.getElementsByTagName("html")[0].setAttribute("dir", "rtl");
   } else {

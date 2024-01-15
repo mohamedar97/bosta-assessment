@@ -13,7 +13,7 @@ const ShipmentInformation = () => {
       justifyContent="flex-start"
       alignItems="flex-end"
       sx={{
-        padding: 10,
+        padding: 20,
       }}
     >
       <ShipmentInformationPiece

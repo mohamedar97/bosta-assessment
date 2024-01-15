@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box";
 import ShipmentInformation from "./shipmentInformation";
 import { Divider } from "@mui/material";
+import ShipmentOverviewStepper from "./shipmentOverviewStepper";
 
 const ShipmentOverview = () => {
   return (
@@ -13,6 +14,7 @@ const ShipmentOverview = () => {
     >
       <ShipmentInformation />
       <Divider />
+      <ShipmentOverviewStepper />
     </Box>
   );
 };

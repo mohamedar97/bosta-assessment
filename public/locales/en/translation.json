@@ -17,10 +17,16 @@
   },
   "ShipmentOverview": {
     "ShipmentInformation": {
-      "one": "Shipment Number 1232143513",
+      "one": "Shipment Number",
       "two": "Last Upadate",
       "three": "Vendor Name",
       "four": "Delievered By"
+    },
+    "ShipmentStatus": {
+      "one": "Shipment Created",
+      "two": "Shipment Received From Vendor",
+      "three": "Shipment Out For Delivery",
+      "four": "Shipment Delivered"
     }
   }
 }
