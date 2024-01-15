@@ -17,5 +17,13 @@
       },
       "three": { "title": "ENG", "link": "#" }
     }
+  },
+  "ShipmentOverview": {
+    "ShipmentInformation": {
+      "one": "رقم الشحنة",
+      "two": "اخر تحديث",
+      "three": "اسم التاجر",
+      "four": "موعد التسليم خلال"
+    }
   }
 }

@@ -14,5 +14,13 @@
       "two": { "title": "Sign In", "link": "https://business.bosta.co/signin" },
       "three": { "title": "AR", "link": "#" }
     }
+  },
+  "ShipmentOverview": {
+    "ShipmentInformation": {
+      "one": "Shipment Number 1232143513",
+      "two": "Last Upadate",
+      "three": "Vendor Name",
+      "four": "Delievered By"
+    }
   }
 }
