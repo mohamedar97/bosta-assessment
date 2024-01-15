@@ -28,5 +28,14 @@
       "three": "Shipment Out For Delivery",
       "four": "Shipment Delivered"
     }
+  },
+  "ShipmentDetails": {
+    "Title": "Shipment Details",
+    "Table": {
+      "one": "Branch",
+      "two": "Date",
+      "three": "Time",
+      "four": "Details"
+    }
   }
 }

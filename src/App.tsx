@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 import AppNavbar from "./components/AppNavbar";
 import { useTranslation } from "react-i18next";
 import ShipmentOverview from "./components/ShipmentOverview";
+import ShipmentDetails from "./components/ShipmentDetails";
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -16,19 +17,13 @@ function App() {
     <div className="App">
       <AppNavbar />
       <Divider />
-      <Container sx={{ marginTop: "5%" }}>
-        <Grid container>
+      <Container sx={{ marginY: "5%" }}>
+        <Grid spacing={10} container>
           <Grid item xs={12}>
             <ShipmentOverview />
           </Grid>
           <Grid item xs={12} md={8}>
-            <Box
-              sx={{
-                background: "green",
-              }}
-              width={"100%"}
-              height={200}
-            ></Box>
+            <ShipmentDetails />
           </Grid>
           <Grid item xs={12} md={4}>
             <Box
