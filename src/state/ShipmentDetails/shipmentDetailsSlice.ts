@@ -6,6 +6,7 @@ interface ShipmentEventDetails {
   date: string;
   time: string;
   reason?: string;
+  exceptionCode?: string;
 }
 interface ShipmentDetails {
   shipmentNumber: string;
@@ -69,6 +70,7 @@ export const fetchShipmentDetails = createAsyncThunk(
           date: event.timestamp,
           time: event.timestamp,
           reason: event.reason ?? undefined,
+          exceptionCode: event.exceptionCode ?? undefined,
         };
       }),
     };

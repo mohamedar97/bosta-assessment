@@ -19,7 +19,6 @@ const ShipmentInformation = () => {
     language === "ar"
       ? shipmentStatusTable(shipmentDetails.shipmentStatus).shortDescription.ar
       : shipmentStatusTable(shipmentDetails.shipmentStatus).shortDescription.en;
-  console.log(shipmentDetails.shipmentStatus);
   return (
     <Grid
       container

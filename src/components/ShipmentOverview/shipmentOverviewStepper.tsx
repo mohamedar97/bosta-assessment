@@ -17,17 +17,35 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { RootState } from "../../state/store";
 import shipmentStatusTable from "../../utils/shipmentStatusHashTable";
+import { Typography } from "@mui/material";
 
 export default function ShipmentOverviewStepper() {
   const shipmentDetails = useSelector(
     (state: RootState) => state.shipmentDetails
   );
+  let shipmentHoldReasons: string = "";
 
   const [t, i18n] = useTranslation();
   const language = i18n.language === "ar" ? "ar" : "en";
 
-  const color = shipmentStatusTable(shipmentDetails.shipmentStatus).color;
+  let color =
+    shipmentStatusTable(shipmentDetails.shipmentStatus).color ?? "#e30613";
   const value = shipmentStatusTable(shipmentDetails.shipmentStatus).value;
+  shipmentDetails.shipmentEvents.forEach((event) => {
+    if (event.reason && shipmentDetails.shipmentStatus != "DELIVERED") {
+      switch (event.exceptionCode) {
+        case "1":
+          color = "#f9ba02";
+          break;
+        case "3":
+          color = "#f9ba02";
+          break;
+        default:
+          color = "#e30613";
+      }
+      shipmentHoldReasons = event.reason;
+    }
+  });
 
   const leftValue =
     language === "ar" ? "calc(50% + 20px )" : "calc( -50% + 20px )";
@@ -121,11 +139,30 @@ export default function ShipmentOverviewStepper() {
         activeStep={value}
         connector={<ColorlibConnector />}
       >
-        {steps.map((label) => (
-          <Step key={label}>
-            <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
-          </Step>
-        ))}
+        {steps.map((label) => {
+          if (
+            label === "Shipment Out For Delivery" ||
+            label === "الشحنة خرجت للتسليم"
+          ) {
+            return (
+              <Step key={label}>
+                <StepLabel StepIconComponent={ColorlibStepIcon}>
+                  <Typography variant="h5">{label}</Typography>
+                  <Typography variant="h6" color={color}>
+                    {shipmentHoldReasons}
+                  </Typography>
+                </StepLabel>
+              </Step>
+            );
+          }
+          return (
+            <Step key={label}>
+              <StepLabel StepIconComponent={ColorlibStepIcon}>
+                <Typography variant="h5">{label}</Typography>
+              </StepLabel>
+            </Step>
+          );
+        })}
       </Stepper>
     </Stack>
   );

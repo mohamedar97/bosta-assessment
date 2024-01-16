@@ -4,8 +4,13 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import { useTranslation } from "react-i18next";
 import ShipmentHelp from "./shipmentHelp";
+import { useSelector } from "react-redux";
+import { RootState } from "../../state/store";
 
 const ShipmentAddress = () => {
+  const shipmentDetails = useSelector(
+    (state: RootState) => state.shipmentDetails
+  );
   const [t, i18n] = useTranslation();
 
   return (
@@ -28,7 +33,11 @@ const ShipmentAddress = () => {
               maxWidth: "350px",
             }}
           >
-            <Typography variant="h6">{t(`ShipmentAddress.Address`)}</Typography>
+            {shipmentDetails.shipmentNumber && (
+              <Typography variant="h6">
+                {t(`ShipmentAddress.Address`)}
+              </Typography>
+            )}
           </Paper>
         </Grid>
         <Grid item xs={12}>

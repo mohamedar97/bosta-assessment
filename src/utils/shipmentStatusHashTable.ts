@@ -60,6 +60,7 @@ const getShipmentStatusInfo = (status: string): ShipmentStatusInfo => {
           ar: "الشحنة خرجت للتسليم",
         },
         value: 2,
+        color: "#e30613",
       };
     case "OUT_FOR_DELIVERY":
       return {
@@ -79,7 +80,7 @@ const getShipmentStatusInfo = (status: string): ShipmentStatusInfo => {
           en: "Shipment cancelled",
           ar: "تم إلغاء الشحنة",
         },
-        description: { en: "Shipment created", ar: "تم إنشاء الشحنة" },
+        description: { en: "Shipment cancelled", ar: "تم إلغاء الشحنة" },
         value: 2,
         color: "#e30613",
       };

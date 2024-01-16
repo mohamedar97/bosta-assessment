@@ -52,8 +52,6 @@ export default function ShipmentDetails() {
   const shipmentDetails = useSelector(
     (state: RootState) => state.shipmentDetails
   );
-  const mappedStatus = shipmentStatusTable(shipmentDetails.shipmentStatus);
-
   const [t, i18n] = useTranslation();
   const language = i18n.language === "ar" ? "ar" : "en";
   const alignment = language === "ar" ? "right" : undefined;
@@ -91,7 +89,6 @@ export default function ShipmentDetails() {
       language === "ar"
         ? shipmentStatusTable(event.state).description.ar
         : shipmentStatusTable(event.state).description.en;
-    console.log(`${event.state} - ${status}`);
     return createData(
       event.hub ?? "-",
       formatTimestamp({ timestamp: event.date, format: "dd/mm/yyyy" }),
