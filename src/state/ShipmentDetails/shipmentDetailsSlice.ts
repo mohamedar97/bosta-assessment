@@ -30,17 +30,21 @@ const shipmentDetailsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(
-      fetchShipmentDetails.fulfilled,
-      (state, action: PayloadAction<ShipmentDetails>) => {
-        state.shipmentNumber = action.payload.shipmentNumber;
-        state.shipmentStatus = action.payload.shipmentStatus;
-        state.lastUpdated = action.payload.lastUpdated;
-        state.vendorName = action.payload.vendorName;
-        state.deliveryDate = action.payload.deliveryDate;
-        state.shipmentEvents = action.payload.shipmentEvents;
-      }
-    );
+    builder
+      .addCase(
+        fetchShipmentDetails.fulfilled,
+        (state, action: PayloadAction<ShipmentDetails>) => {
+          state.shipmentNumber = action.payload.shipmentNumber;
+          state.shipmentStatus = action.payload.shipmentStatus;
+          state.lastUpdated = action.payload.lastUpdated;
+          state.vendorName = action.payload.vendorName;
+          state.deliveryDate = action.payload.deliveryDate;
+          state.shipmentEvents = action.payload.shipmentEvents;
+        }
+      )
+      .addCase(fetchShipmentDetails.rejected, (state, action) => {
+        window.alert("Shipment Not Found");
+      });
   },
 });
 

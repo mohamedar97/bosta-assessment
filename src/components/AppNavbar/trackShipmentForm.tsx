@@ -36,7 +36,15 @@ const TrackShipmentForm: React.FC<Props> = ({ title, placeholder }) => {
   ) => {
     setTextFieldValue(event.target.value);
   };
+
   const handleSearch = () => {
+    if (textFieldValue === "") {
+      return;
+    }
+    if (isNaN(Number(textFieldValue))) {
+      window.alert("Please enter a valid shipment number");
+      return;
+    }
     dispatch(fetchShipmentDetails(textFieldValue));
     handleClose();
   };
@@ -87,6 +95,7 @@ const TrackShipmentForm: React.FC<Props> = ({ title, placeholder }) => {
             </Typography>
             <Stack direction="row" alignItems="center">
               <TextField
+                inputProps={{ pattern: "[0-9]*" }}
                 onChange={handleTextFieldChange}
                 sx={{ height: "56px", borderRadius: "4px " }}
                 placeholder={placeholder}
