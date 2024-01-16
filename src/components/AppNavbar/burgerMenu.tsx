@@ -33,53 +33,41 @@ export default function BurgerMenu() {
       setState({ ...state, [anchor]: open });
     };
 
+  const middleSectionKeys = ["one", "two", "three"] as const;
+  const lastSectionKeys = ["three", "two"] as const;
+
   const list = (anchor: Anchor) => (
     <Box onClick={toggleDrawer(anchor, false)}>
       <List>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <NavBarItem
-              title={t(`AppNavbar.LastSection.three.title`)}
-              link={t(`AppNavbar.LastSection.three.link`)}
-              onClick={changeLanguage}
-            />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <NavBarItem
-              title={t(`AppNavbar.LastSection.two.title`)}
-              link={t(`AppNavbar.LastSection.two.link`)}
-            />
-          </ListItemButton>
-        </ListItem>
+        {lastSectionKeys.map((key) => {
+          const title = t(`AppNavbar.LastSection.${key}.title`);
+          const link = t(`AppNavbar.LastSection.${key}.link`);
+          const onClick =
+            title === "ENG" || "AR" ? () => changeLanguage(title) : () => {};
+
+          return (
+            <ListItem disablePadding>
+              <ListItemButton>
+                <NavBarItem title={title} link={link} onClick={onClick} />
+              </ListItemButton>
+            </ListItem>
+          );
+        })}
       </List>
       <Divider />
       <List>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <NavBarItem
-              title={t(`AppNavbar.MiddleSection.one.title`)}
-              link={t(`AppNavbar.MiddleSection.one.link`)}
-            />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <NavBarItem
-              title={t(`AppNavbar.MiddleSection.two.title`)}
-              link={t(`AppNavbar.MiddleSection.two.link`)}
-            />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <NavBarItem
-              title={t(`AppNavbar.MiddleSection.three.title`)}
-              link={t(`AppNavbar.MiddleSection.three.link`)}
-            />
-          </ListItemButton>
-        </ListItem>
+        {middleSectionKeys.map((key) => {
+          return (
+            <ListItem disablePadding>
+              <ListItemButton>
+                <NavBarItem
+                  title={t(`AppNavbar.MiddleSection.${key}.title`)}
+                  link={t(`AppNavbar.MiddleSection.${key}.link`)}
+                />
+              </ListItemButton>
+            </ListItem>
+          );
+        })}
       </List>
     </Box>
   );
