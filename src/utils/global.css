@@ -23,3 +23,6 @@ ul {
 .MuiTablePagination-displayedRows {
   display: none;
 }
+.MuiMenuItem-root:hover {
+  background-color: #ffffff !important;
+}
