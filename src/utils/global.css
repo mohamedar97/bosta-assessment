@@ -17,3 +17,9 @@ a {
 ul {
   padding: 0 !important;
 }
+.MuiTablePagination-root {
+  display: none;
+}
+.MuiTablePagination-displayedRows {
+  display: none;
+}

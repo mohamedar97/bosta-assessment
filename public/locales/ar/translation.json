@@ -35,6 +35,8 @@
   "ShipmentDetails": {
     "Title": "تفاصيل الشحنة",
     "Table": {
+      "RowsPerPage": "عدد الصفوف في كل صفحة",
+
       "one": "الفرع",
       "two": "التاريخ",
       "three": "الوقت",

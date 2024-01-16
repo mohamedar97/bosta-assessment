@@ -32,6 +32,7 @@
   "ShipmentDetails": {
     "Title": "Shipment Details",
     "Table": {
+      "RowsPerPage": "Rows per page",
       "one": "Branch",
       "two": "Date",
       "three": "Time",

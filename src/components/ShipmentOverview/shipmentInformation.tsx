@@ -23,8 +23,10 @@ const ShipmentInformation = () => {
     color = shipmentStatusTable[shipmentDetails.shipmentStatus].color;
     status =
       language === "ar"
-        ? shipmentStatusTable[shipmentDetails.shipmentStatus].description.ar
-        : shipmentStatusTable[shipmentDetails.shipmentStatus].description.en;
+        ? shipmentStatusTable[shipmentDetails.shipmentStatus].shortDescription
+            .ar
+        : shipmentStatusTable[shipmentDetails.shipmentStatus].shortDescription
+            .en;
   }
 
   return (
