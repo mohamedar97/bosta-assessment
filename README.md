@@ -1,4 +1,9 @@
 # Bosta Front End Engineer Assessment - Mohamed Raafat
+
+**Hosting Link:** https://bostaassessment.web.app/
+To run code:
+- npm install
+- npm run start
 ### Below is a list of the work I've produced:
 - Created a React App similar to the UI provided in the email.
 - Built responsive UI using **MUI** that is suitable for desktop and mobile.
