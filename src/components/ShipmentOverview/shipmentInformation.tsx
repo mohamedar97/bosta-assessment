@@ -13,22 +13,13 @@ const ShipmentInformation = () => {
 
   const [t, i18n] = useTranslation();
   const language = i18n.language === "ar" ? "ar" : "en";
-  const mappedStatus = shipmentStatusTable[shipmentDetails.shipmentStatus];
-  let status;
-  let color;
-  if (mappedStatus === undefined) {
-    status = "";
-    color = "";
-  } else {
-    color = shipmentStatusTable[shipmentDetails.shipmentStatus].color;
-    status =
-      language === "ar"
-        ? shipmentStatusTable[shipmentDetails.shipmentStatus].shortDescription
-            .ar
-        : shipmentStatusTable[shipmentDetails.shipmentStatus].shortDescription
-            .en;
-  }
 
+  const color = shipmentStatusTable(shipmentDetails.shipmentStatus).color;
+  const status =
+    language === "ar"
+      ? shipmentStatusTable(shipmentDetails.shipmentStatus).shortDescription.ar
+      : shipmentStatusTable(shipmentDetails.shipmentStatus).shortDescription.en;
+  console.log(shipmentDetails.shipmentStatus);
   return (
     <Grid
       container

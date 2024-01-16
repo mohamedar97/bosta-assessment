@@ -25,16 +25,9 @@ export default function ShipmentOverviewStepper() {
 
   const [t, i18n] = useTranslation();
   const language = i18n.language === "ar" ? "ar" : "en";
-  const mappedStatus = shipmentStatusTable[shipmentDetails.shipmentStatus];
-  let value;
-  let color: any;
-  if (mappedStatus === undefined) {
-    value = 0;
-    color = "#ccc";
-  } else {
-    color = shipmentStatusTable[shipmentDetails.shipmentStatus].color;
-    value = shipmentStatusTable[shipmentDetails.shipmentStatus].value;
-  }
+
+  const color = shipmentStatusTable(shipmentDetails.shipmentStatus).color;
+  const value = shipmentStatusTable(shipmentDetails.shipmentStatus).value;
 
   const leftValue =
     language === "ar" ? "calc(50% + 20px )" : "calc( -50% + 20px )";
