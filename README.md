@@ -8,11 +8,14 @@ To run code:
 ### Below is a list of the work I've produced:
 - Created a React App similar to the UI provided in the email.
 - Built responsive UI using **MUI** that is suitable for desktop and mobile.
+- Used **Git** version control system.
+- Maintained a clean project structure.
 - Used **Cairo** font.
 - Used **Redux/ReduxToolkit** for state management.
 - Localized the app UI using **i18n-Next**.
 - Used **Fetch API** to send a get request to the provided endpoint to get shipment details.
 - Used **Postman** to understand the API response and the values it returns.
+- Handled the exceptions resulting from the responses.
 - Processed the provided timestamp to create the different date/time formats provided in the UI.
 - Mapped the English values in the API response to Arabic to ensure proper localization.
 - Changed the colors of the UI dynamically depending on the API response.
