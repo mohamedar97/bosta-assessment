@@ -22,7 +22,6 @@ export default function ShipmentOverviewStepper() {
   const shipmentDetails = useSelector(
     (state: RootState) => state.shipmentDetails
   );
-  console.log(shipmentDetails.shipmentNumber);
 
   const [t, i18n] = useTranslation();
   const language = i18n.language === "ar" ? "ar" : "en";

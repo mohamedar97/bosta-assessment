@@ -9,6 +9,11 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { useTranslation } from "react-i18next";
 import { Typography } from "@mui/material";
+import { useSelector } from "react-redux";
+import { RootState } from "../../state/store";
+import formatTimestamp from "../../utils/dateFromat";
+import shipmentStatusTable from "../../utils/shipmentStatusHashTable";
+import { useReducer } from "react";
 
 interface Column {
   id: "Branch" | "Date" | "Time" | "Details";
@@ -44,8 +49,14 @@ const rows = [
 ];
 
 export default function ShipmentDetails() {
+  const shipmentDetails = useSelector(
+    (state: RootState) => state.shipmentDetails
+  );
+  const mappedStatus = shipmentStatusTable[shipmentDetails.shipmentStatus];
+
   const [t, i18n] = useTranslation();
-  const alignment = i18n.language === "ar" ? "right" : undefined;
+  const language = i18n.language === "ar" ? "ar" : "en";
+  const alignment = language === "ar" ? "right" : undefined;
   const columns: readonly Column[] = [
     {
       id: "Branch",
@@ -75,19 +86,33 @@ export default function ShipmentDetails() {
     },
   ];
 
+  let rows = shipmentDetails.shipmentEvents.map((event) => {
+    let status =
+      language === "ar"
+        ? shipmentStatusTable[event.state].description.ar
+        : shipmentStatusTable[event.state].description.en;
+    console.log(`${event.state} - ${status}`);
+    return createData(
+      event.hub ?? "-",
+      formatTimestamp({ timestamp: event.date, format: "dd/mm/yyyy" }),
+      formatTimestamp({ timestamp: event.time, format: "hh:mm" }),
+      status
+    );
+  });
+
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
-  const handleChangePage = (event: unknown, newPage: number) => {
-    setPage(newPage);
-  };
+  // const handleChangePage = (event: unknown, newPage: number) => {
+  //   setPage(newPage);
+  // };
 
-  const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
+  // const handleChangeRowsPerPage = (
+  //   event: React.ChangeEvent<HTMLInputElement>
+  // ) => {
+  //   setRowsPerPage(+event.target.value);
+  //   setPage(0);
+  // };
 
   return (
     <>
@@ -127,7 +152,7 @@ export default function ShipmentDetails() {
                       hover
                       role="checkbox"
                       tabIndex={-1}
-                      key={row.Details}
+                      key={Math.random()}
                     >
                       {columns.map((column) => {
                         const value = row[column.id];

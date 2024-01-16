@@ -33,7 +33,6 @@ const shipmentDetailsSlice = createSlice({
     builder.addCase(
       fetchShipmentDetails.fulfilled,
       (state, action: PayloadAction<ShipmentDetails>) => {
-        // console.log(action.payload);
         state.shipmentNumber = action.payload.shipmentNumber;
         state.shipmentStatus = action.payload.shipmentStatus;
         state.lastUpdated = action.payload.lastUpdated;

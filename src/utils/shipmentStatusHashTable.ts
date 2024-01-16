@@ -68,15 +68,3 @@ const shipmentStatusTable: Record<string, ShipmentStatusInfo> = {
   // Add more statuses as needed
 };
 export default shipmentStatusTable;
-// // Example usage
-// const currentStatus = "inTransit";
-// const statusInfo = shipmentStatusTable[currentStatus];
-
-// if (statusInfo) {
-//   console.log(`Status: ${currentStatus}`);
-//   console.log(`English Description: ${statusInfo.description.en}`);
-//   console.log(`Arabic Description: ${statusInfo.description.ar}`);
-//   statusInfo.action(); // Perform the associated action
-// } else {
-//   console.log("Invalid shipment status");
-// }
