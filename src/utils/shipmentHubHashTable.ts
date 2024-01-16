@@ -22,13 +22,21 @@ const shipmentHubHashTable = (hub: string): ShipmentHubInfo => {
       return {
         description: { en: "Haram Hub", ar: "مركز الهرم" },
       };
-    case "Cairo Sorting Facility":
+    case "Alexandria Hub":
       return {
-        description: { en: "Cairo Sorting Facility", ar: "مركز فرز القاهرة" },
+        description: { en: "Alexandria Hub", ar: "مركز الإسكندرية" },
       };
-    case "Cairo Sorting Facility":
+    case "Nasr City Hub":
       return {
-        description: { en: "Cairo Sorting Facility", ar: "مركز فرز القاهرة" },
+        description: { en: "Nasr City Hub", ar: "مركز مدينة نصر" },
+      };
+    case "October Hub":
+      return {
+        description: { en: "October", ar: "مركز اكتوبر" },
+      };
+    case "Maadi Hub":
+      return {
+        description: { en: "Maadi Hub", ar: "مركز المعادي" },
       };
     case "FM & Reverse Hub":
       return {
