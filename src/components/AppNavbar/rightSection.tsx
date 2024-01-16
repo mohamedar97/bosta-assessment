@@ -2,6 +2,7 @@ import Grid from "@mui/material/Grid";
 import TrackShipmentForm from "./trackShipmentForm";
 import NavBarItem from "./navBarItem";
 import { useTranslation } from "react-i18next";
+import { on } from "events";
 
 const RightSection = () => {
   const [t, i18n] = useTranslation();
@@ -13,6 +14,9 @@ const RightSection = () => {
       i18n.changeLanguage("en");
     }
   };
+
+  const keys = ["three", "two"] as const;
+
   return (
     <Grid
       container
@@ -27,19 +31,21 @@ const RightSection = () => {
           placeholder={t(`AppNavbar.LastSection.one.placeholder`)}
         />
       </Grid>
-      <Grid item>
-        <NavBarItem
-          title={t(`AppNavbar.LastSection.two.title`)}
-          link={t(`AppNavbar.LastSection.two.link`)}
-        />
-      </Grid>
-      <Grid item>
-        <NavBarItem
-          title={t(`AppNavbar.LastSection.three.title`)}
-          link={t(`AppNavbar.LastSection.three.link`)}
-          onClick={changeLanguage}
-        />
-      </Grid>
+
+      {keys.map((key) => {
+        let title = t(`AppNavbar.LastSection.${key}.title`);
+        let link = t(`AppNavbar.LastSection.${key}.link`);
+        let onClick = () => {};
+
+        if (title === "ENG" || title === "AR") {
+          onClick = () => changeLanguage(title);
+        }
+        return (
+          <Grid item>
+            <NavBarItem title={title} link={link} onClick={onClick} />
+          </Grid>
+        );
+      })}
     </Grid>
   );
 };

@@ -2,21 +2,6 @@ import Grid from "@mui/material/Grid";
 import NavBarItem from "./navBarItem";
 import { useTranslation } from "react-i18next";
 
-const navItems = [
-  {
-    title: "Home",
-    link: "#",
-  },
-  {
-    title: "Pricing",
-    link: "#",
-  },
-  {
-    title: "Contact Sales",
-    link: "#",
-  },
-];
-
 const MiddleSection = () => {
   const { t } = useTranslation();
   const keys = ["one", "two", "three"] as const;

@@ -1,15 +1,5 @@
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import {
-  Button,
-  ButtonBase,
-  Link,
-  Menu,
-  MenuItem,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { ButtonBase, Link, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import { on } from "events";
 import React from "react";
 import { useTranslation } from "react-i18next";
 
@@ -37,9 +27,7 @@ const NavBarItem: React.FC<NavBarItemProps> = ({ title, link, onClick }) => {
           cursor: "pointer",
         }}
       >
-        {/* <Stack direction="row" alignItems="start" gap={1}> */}
         <ButtonBase
-          // variant="text"
           onClick={onClickHandler}
           sx={{
             padding: "0px ",
@@ -61,7 +49,6 @@ const NavBarItem: React.FC<NavBarItemProps> = ({ title, link, onClick }) => {
             {title}
           </Typography>
         </ButtonBase>
-        {/* </Stack> */}
       </Link>
     </Grid>
   );
