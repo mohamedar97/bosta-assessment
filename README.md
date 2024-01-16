@@ -24,7 +24,7 @@ To run code:
 ### Limitations:
 - The API endpoint doesn't return the shipping address, which makes sense, as this is a public endpoint, and you wouldn't want to expose the customer's personal details. I have hard-coded the address.
 
-- Due to the lack of access to the API endpoint documentation, I couldn't get all the exact values for the "Hubs", "Shipment Statuses", and other properties, so I utilized default values to handle unknown values.
+- Due to the lack of access to the API endpoint documentation, I couldn't get all the exact values for the "Hubs", "Shipment Statuses", and other properties for proper translation, so for unknown values, I defaulted to the English translation provided by the API.
 
 ### Areas of Improvement
 -  **Use Ant Design**: I realized you used Ant Design for the website's UI midway through the assessment. If I had noticed earlier I would have used it instead of MUI to match your design language more.
