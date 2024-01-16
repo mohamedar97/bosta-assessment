@@ -17,7 +17,7 @@ function formatTimestamp({
   const date = new Date(timestamp);
 
   if (isNaN(date.getTime())) {
-    return "Invalid Date";
+    return "";
   }
 
   // Format date components

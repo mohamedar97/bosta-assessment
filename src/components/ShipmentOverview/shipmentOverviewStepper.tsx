@@ -14,59 +14,79 @@ import StepConnector, {
 } from "@mui/material/StepConnector";
 import { StepIconProps } from "@mui/material/StepIcon";
 import { useTranslation } from "react-i18next";
-
-const ColorlibStepIconRoot = styled("div")<{
-  ownerState: { completed?: boolean; active?: boolean };
-}>(({ theme, ownerState }) => ({
-  backgroundColor:
-    theme.palette.mode === "dark" ? theme.palette.grey[700] : "#ccc",
-  zIndex: 1,
-  color: "#fff",
-  width: 50,
-  height: 50,
-  display: "flex",
-  borderRadius: "50%",
-  justifyContent: "center",
-  alignItems: "center",
-  ...(ownerState.active && {
-    backgroundColor: "#e30613",
-    boxShadow: "0 4px 10px 0 rgba(0,0,0,.25)",
-  }),
-  ...(ownerState.completed && {
-    backgroundColor: "#e30613",
-  }),
-}));
-
-function ColorlibStepIcon(props: StepIconProps) {
-  const { active, completed, className } = props;
-
-  const icons: { [index: string]: React.ReactElement } = {
-    1: <AddCircleIcon />,
-    2: <AssignmentTurnedInIcon />,
-    3: <LocalShippingIcon />,
-    4: <HowToRegIcon />,
-  };
-
-  return (
-    <ColorlibStepIconRoot
-      ownerState={{ completed, active }}
-      className={className}
-    >
-      {completed ? (
-        <Check className="QontoStepIcon-completedIcon" />
-      ) : (
-        icons[String(props.icon)]
-      )}
-    </ColorlibStepIconRoot>
-  );
-}
+import { useSelector } from "react-redux";
+import { RootState } from "../../state/store";
+import shipmentStatusTable from "../../utils/shipmentStatusHashTable";
 
 export default function ShipmentOverviewStepper() {
+  const shipmentDetails = useSelector(
+    (state: RootState) => state.shipmentDetails
+  );
+  console.log(shipmentDetails.shipmentNumber);
+
   const [t, i18n] = useTranslation();
+  const language = i18n.language === "ar" ? "ar" : "en";
+  const mappedStatus = shipmentStatusTable[shipmentDetails.shipmentStatus];
+  let value;
+  let color: any;
+  if (mappedStatus === undefined) {
+    value = 0;
+    color = "#ccc";
+  } else {
+    color = shipmentStatusTable[shipmentDetails.shipmentStatus].color;
+    value = shipmentStatusTable[shipmentDetails.shipmentStatus].value;
+  }
+
   const leftValue =
-    i18n.language === "ar" ? "calc(50% + 20px )" : "calc( -50% + 20px )";
+    language === "ar" ? "calc(50% + 20px )" : "calc( -50% + 20px )";
   const rightValue =
-    i18n.language === "ar" ? "calc( -50% + 20px )" : "calc(50% + 20px )";
+    language === "ar" ? "calc( -50% + 20px )" : "calc(50% + 20px )";
+
+  const ColorlibStepIconRoot = styled("div")<{
+    ownerState: { completed?: boolean; active?: boolean };
+  }>(({ theme, ownerState }) => ({
+    backgroundColor:
+      theme.palette.mode === "dark" ? theme.palette.grey[700] : "#ccc",
+    zIndex: 1,
+    color: "#fff",
+    width: 50,
+    height: 50,
+    display: "flex",
+    borderRadius: "50%",
+    justifyContent: "center",
+    alignItems: "center",
+    ...(ownerState.active && {
+      backgroundColor: color,
+      boxShadow: "0 4px 10px 0 rgba(0,0,0,.25)",
+    }),
+    ...(ownerState.completed && {
+      backgroundColor: color,
+    }),
+  }));
+
+  function ColorlibStepIcon(props: StepIconProps) {
+    const { active, completed, className } = props;
+
+    const icons: { [index: string]: React.ReactElement } = {
+      1: <AddCircleIcon />,
+      2: <AssignmentTurnedInIcon />,
+      3: <LocalShippingIcon />,
+      4: <HowToRegIcon />,
+    };
+
+    return (
+      <ColorlibStepIconRoot
+        ownerState={{ completed, active }}
+        className={className}
+      >
+        {completed ? (
+          <Check className="QontoStepIcon-completedIcon" />
+        ) : (
+          icons[String(props.icon)]
+        )}
+      </ColorlibStepIconRoot>
+    );
+  }
 
   const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
     [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -76,13 +96,13 @@ export default function ShipmentOverviewStepper() {
     },
     [`&.${stepConnectorClasses.active}`]: {
       [`& .${stepConnectorClasses.line}`]: {
-        backgroundColor: "#e30613",
+        backgroundColor: color,
         direction: "rtl",
       },
     },
     [`&.${stepConnectorClasses.completed}`]: {
       [`& .${stepConnectorClasses.line}`]: {
-        backgroundColor: "#e30613",
+        backgroundColor: color,
         direction: "rtl",
       },
     },
@@ -106,7 +126,7 @@ export default function ShipmentOverviewStepper() {
     <Stack sx={{ width: "100%", paddingY: 15 }}>
       <Stepper
         alternativeLabel
-        activeStep={3}
+        activeStep={value}
         connector={<ColorlibConnector />}
       >
         {steps.map((label) => (

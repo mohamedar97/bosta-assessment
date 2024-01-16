@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { RootState } from "../../state/store";
 import { useSelector } from "react-redux";
 import formatTimestamp from "../../utils/dateFromat";
+import shipmentStatusTable from "../../utils/shipmentStatusHashTable";
 
 const ShipmentInformation = () => {
   const shipmentDetails = useSelector(
@@ -13,6 +14,19 @@ const ShipmentInformation = () => {
 
   const [t, i18n] = useTranslation();
   const language = i18n.language === "ar" ? "ar" : "en";
+  const mappedStatus = shipmentStatusTable[shipmentDetails.shipmentStatus];
+  let status;
+  let color;
+  if (mappedStatus === undefined) {
+    status = "";
+    color = "";
+  } else {
+    color = shipmentStatusTable[shipmentDetails.shipmentStatus].color;
+    status =
+      language === "ar"
+        ? shipmentStatusTable[shipmentDetails.shipmentStatus].description.ar
+        : shipmentStatusTable[shipmentDetails.shipmentStatus].description.en;
+  }
 
   return (
     <Grid
@@ -30,7 +44,8 @@ const ShipmentInformation = () => {
           " " +
           shipmentDetails.shipmentNumber
         }
-        value={shipmentDetails.shipmentStatus}
+        value={status}
+        color={color}
       />
       <ShipmentInformationPiece
         title={t(`ShipmentOverview.ShipmentInformation.two`)}
