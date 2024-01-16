@@ -52,11 +52,11 @@ const getShipmentStatusInfo = (status: string): ShipmentStatusInfo => {
     case "WAITING_FOR_CUSTOMER_ACTION":
       return {
         shortDescription: {
-          en: "Shipment our for delivery",
+          en: "Shipment out for delivery",
           ar: "الشحنة خرجت للتسليم",
         },
         description: {
-          en: "Shipment our for delivery",
+          en: "Shipment out for delivery",
           ar: "الشحنة خرجت للتسليم",
         },
         value: 2,
@@ -65,11 +65,11 @@ const getShipmentStatusInfo = (status: string): ShipmentStatusInfo => {
     case "OUT_FOR_DELIVERY":
       return {
         shortDescription: {
-          en: "Shipment our for delivery",
+          en: "Shipment out for delivery",
           ar: "الشحنة خرجت للتسليم",
         },
         description: {
-          en: "Shipment our for delivery",
+          en: "Shipment out for delivery",
           ar: "الشحنة خرجت للتسليم",
         },
         value: 3,

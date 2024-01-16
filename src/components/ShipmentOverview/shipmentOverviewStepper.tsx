@@ -18,6 +18,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../state/store";
 import shipmentStatusTable from "../../utils/shipmentStatusHashTable";
 import { Typography } from "@mui/material";
+import shipmentReasonHashTable from "../../utils/shipmentReasonHashTable";
 
 export default function ShipmentOverviewStepper() {
   const shipmentDetails = useSelector(
@@ -43,7 +44,11 @@ export default function ShipmentOverviewStepper() {
         default:
           color = "#e30613";
       }
-      shipmentHoldReasons = event.reason;
+      let reason =
+        language === "ar"
+          ? shipmentReasonHashTable(event.reason).description.ar
+          : shipmentReasonHashTable(event.reason).description.en;
+      shipmentHoldReasons = reason;
     }
   });
 
@@ -148,7 +153,7 @@ export default function ShipmentOverviewStepper() {
               <Step key={label}>
                 <StepLabel StepIconComponent={ColorlibStepIcon}>
                   <Typography variant="h5">{label}</Typography>
-                  <Typography variant="h6" color={color}>
+                  <Typography variant="subtitle1" color={color}>
                     {shipmentHoldReasons}
                   </Typography>
                 </StepLabel>

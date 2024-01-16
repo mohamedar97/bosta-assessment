@@ -14,6 +14,7 @@ import { RootState } from "../../state/store";
 import formatTimestamp from "../../utils/dateFromat";
 import shipmentStatusTable from "../../utils/shipmentStatusHashTable";
 import { useReducer } from "react";
+import shipmentHubTable from "../../utils/shipmentHubHashTable";
 
 interface Column {
   id: "Branch" | "Date" | "Time" | "Details";
@@ -89,8 +90,13 @@ export default function ShipmentDetails() {
       language === "ar"
         ? shipmentStatusTable(event.state).description.ar
         : shipmentStatusTable(event.state).description.en;
+    let hub =
+      language === "ar"
+        ? shipmentHubTable(event.hub ?? "-").description.ar
+        : shipmentHubTable(event.hub ?? "-").description.en;
+    console.log(event.hub);
     return createData(
-      event.hub ?? "-",
+      hub,
       formatTimestamp({ timestamp: event.date, format: "dd/mm/yyyy" }),
       formatTimestamp({ timestamp: event.time, format: "hh:mm" }),
       status

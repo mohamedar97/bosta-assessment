@@ -5,6 +5,7 @@ import { RootState } from "../../state/store";
 import { useSelector } from "react-redux";
 import formatTimestamp from "../../utils/dateFromat";
 import shipmentStatusTable from "../../utils/shipmentStatusHashTable";
+import shipmentReasonHashTable from "../../utils/shipmentReasonHashTable";
 
 const ShipmentInformation = () => {
   const shipmentDetails = useSelector(
@@ -14,11 +15,25 @@ const ShipmentInformation = () => {
   const [t, i18n] = useTranslation();
   const language = i18n.language === "ar" ? "ar" : "en";
 
-  const color = shipmentStatusTable(shipmentDetails.shipmentStatus).color;
+  let color = shipmentStatusTable(shipmentDetails.shipmentStatus).color;
   const status =
     language === "ar"
       ? shipmentStatusTable(shipmentDetails.shipmentStatus).shortDescription.ar
       : shipmentStatusTable(shipmentDetails.shipmentStatus).shortDescription.en;
+  shipmentDetails.shipmentEvents.forEach((event) => {
+    if (event.reason && shipmentDetails.shipmentStatus != "DELIVERED") {
+      switch (event.exceptionCode) {
+        case "1":
+          color = "#f9ba02";
+          break;
+        case "3":
+          color = "#f9ba02";
+          break;
+        default:
+          color = "#e30613";
+      }
+    }
+  });
   return (
     <Grid
       container
