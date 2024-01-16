@@ -18,7 +18,7 @@
   "ShipmentOverview": {
     "ShipmentInformation": {
       "one": "Shipment Number",
-      "two": "Last Upadate",
+      "two": "Last Update",
       "three": "Vendor Name",
       "four": "Delievered By"
     },

@@ -11,8 +11,12 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import React from "react";
+import React, { useState } from "react";
 import NavBarItem from "./navBarItem";
+
+import { fetchShipmentDetails } from "../../state/ShipmentDetails/shipmentDetailsSlice";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../state/store";
 
 interface Props {
   title: string;
@@ -20,10 +24,21 @@ interface Props {
 }
 
 const TrackShipmentForm: React.FC<Props> = ({ title, placeholder }) => {
+  const dispatch = useDispatch<AppDispatch>();
+  const [textFieldValue, setTextFieldValue] = useState("");
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     setAnchorEl(event.currentTarget);
+  };
+  const handleTextFieldChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setTextFieldValue(event.target.value);
+  };
+  const handleSearch = () => {
+    dispatch(fetchShipmentDetails(textFieldValue));
+    handleClose();
   };
   const handleClose = () => {
     setAnchorEl(null);
@@ -72,10 +87,12 @@ const TrackShipmentForm: React.FC<Props> = ({ title, placeholder }) => {
             </Typography>
             <Stack direction="row" alignItems="center">
               <TextField
+                onChange={handleTextFieldChange}
                 sx={{ height: "56px", borderRadius: "4px " }}
                 placeholder={placeholder}
               />
               <IconButton
+                onClick={handleSearch}
                 disableRipple
                 type="button"
                 sx={{

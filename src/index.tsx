@@ -6,6 +6,8 @@ import AppTheme from "./utils/AppTheme";
 
 import "./utils/global.css";
 import "./i18n";
+import { Provider } from "react-redux";
+import { store } from "./state/store";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -13,10 +15,12 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={AppTheme}>
-      <React.Suspense fallback="Loading...">
-        <App />
-      </React.Suspense>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={AppTheme}>
+        <React.Suspense fallback="Loading...">
+          <App />
+        </React.Suspense>
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>
 );
