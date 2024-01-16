@@ -6,20 +6,21 @@
 - Used **Redux/ReduxToolkit** for state management.
 - Localized the app UI using **i18n-Next**.
 - Used **Fetch API** to send a get request to the provided endpoint to get shipment details.
-- Used **Postman** to understand the API response, and the values it returns.
+- Used **Postman** to understand the API response and the values it returns.
 - Processed the provided timestamp to create the different date/time formats provided in the UI.
 - Mapped the English values in the API response to Arabic to ensure proper localization.
 - Changed the colors of the UI dynamically depending on the API response.
+- Deployed the app on **Firebase**.
 
 ### Limitations:
-- The API endpoint doesn't return the shipping address, which makes sense, as this is a public endpoint, and you wouldn't want to expose customer's personal details. I have hard-coded the address.
+- The API endpoint doesn't return the shipping address, which makes sense, as this is a public endpoint, and you wouldn't want to expose the customer's personal details. I have hard-coded the address.
 
-- Due to the lack of access to the API endpoint documentation, I couldn't get all the exact values for the "Hubs", "Shipment Statuses", and other properties, so I utilised default values to handle unknown values.
+- Due to the lack of access to the API endpoint documentation, I couldn't get all the exact values for the "Hubs", "Shipment Statuses", and other properties, so I utilized default values to handle unknown values.
 
 ### Areas of Improvement
--  **Use Ant Design**: I realised you use Ant Design for the website's UI midway through the assessment. If i had noticed earlier i would have used it instead of MUI to match your design language more.
+-  **Use Ant Design**: I realized you used Ant Design for the website's UI midway through the assessment. If I had noticed earlier I would have used it instead of MUI to match your design language more.
 
--  **Use an AI Translator**: The localization of static UI elements was easy, but the API responses were harder. Instead of the currently used manual mapping , i would have used an AI tool to translate the API responses.
+-  **Use an AI Translator**: The localization of static UI elements was easy, but the API responses were harder. Instead of the currently used manual mapping, I would have used an AI tool to translate the API responses.
 
 ### Assumptions
 - **The Icons and Images**: I couldn't extract these from the provided images, so I used **Material Icons**
